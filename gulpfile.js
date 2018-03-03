@@ -1,39 +1,25 @@
-var gulp = require("gulp");
-var uglify = require("gulp-uglify");
-var pump = require('pump');
-var pipe = require('pipe');
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
 
-// styles
-gulp.task("styles", () => console.log("Startng styles task"));
+// Styles
+gulp.task('styles', function () {
+	console.log('starting styles task');
+});
 
- // images
- gulp.task("images", () => console.log("Starting images task"));
+// Scripts
+gulp.task('scripts', function () {
+	console.log('starting scripts task');
 
- // default
- gulp.task("default", () =>  console.log("Starting default task") );
+	return gulp.src('public/scripts/*.js')
+		.pipe(uglify())
+		.pipe(gulp.dest('public/dist'));
+});
 
- // scripts 
+// Images
+gulp.task('images', function () {
+	console.log('starting images task');
+});
 
-// #1 WAY
-
-gulp.task("scripts", function()  {
-console.log("Starting scripts");
- return gulp.src("public/scripts/main.js")
-.pipe(uglify())
-.pipe(gulp.dest("public")); 
-
-}); 
-
-// #2 WAY --doesn't work either
-
-/*
-gulp.task('scripts', function (cb) {
-          console.log("Starting scripts task");
-  pump([
-      gulp.src("/public/scripts/*.js"),
-      uglify(),
-      gulp.dest('/public/dist/')
-    ],
-    cb
-  );
-}); */
+gulp.task('default', function () {
+	console.log('Starting default task');
+});
