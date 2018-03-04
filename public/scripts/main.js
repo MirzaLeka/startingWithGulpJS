@@ -1,3 +1,4 @@
-var name = 'MIRZA';
+var name = "Mirza";
+document.write("My name is " + name);
 
-document.write('Hello ' + name + '!');
+
